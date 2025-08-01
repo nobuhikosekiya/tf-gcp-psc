@@ -1,0 +1,39 @@
+# Project and Region Configuration
+project_id = "your-gcp-project-id"
+region     = "asia-northeast1"  # Must match your Elastic Cloud deployment region
+zone       = "asia-northeast1-a"
+
+# Resource Naming (optional - will use defaults with resource_prefix if not specified)
+resource_prefix = "elastic-psc"
+# network_name = "custom-network-name"
+# subnet_name = "custom-subnet-name"
+# psc_endpoint_name = "custom-psc-endpoint"
+# instance_name = "custom-instance-name"
+# service_account_name = "custom-sa-name"
+# dns_zone_name = "custom-dns-zone"
+
+# Network Configuration
+subnet_cidr = "10.0.1.0/24"
+
+# Compute Instance Configuration
+create_compute_instance = true  # Set to false if you don't need a test instance
+machine_type           = "e2-micro"
+boot_disk_size         = 100
+disk_type              = "pd-standard"
+os_image               = "debian-cloud/debian-11"
+
+# DNS Configuration
+dns_ttl = 300
+
+# Firewall Configuration
+ssh_source_ranges = ["0.0.0.0/0"]  # Restrict this for better security
+network_tags = {
+  ssh_access     = "ssh-access"
+  elastic_client = "elastic-client"
+}
+
+# Additional Labels (optional)
+additional_labels = {
+  environment = "dev"
+  cost_center = "engineering"
+}
